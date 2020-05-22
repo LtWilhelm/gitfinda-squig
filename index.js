@@ -65,7 +65,7 @@ client.on('message', message => {
           return aCount > bCount ? aCount : bCount
         }, 0) + 1
 
-        axios.post(trelloURL + '1/cards' + trelloKey + `&name=Issue%20%23${number}&desc=${request}&idList=${process.env.REQUESTS_LIST}`)
+        axios.post(trelloURL + '1/cards' + trelloKey + `&name=Request%20%23${number}&desc=${request}&idList=${process.env.REQUESTS_LIST}`)
           .then(() => message.channel.send(`Da mek boyz will 'ave a gran' ol' time wiv dis one. Request #${number}`))
           .catch(err => {
             message.channel.send(`Zog off, I'z taking a snooze over 'ere. Thingy'z broke anyhowz, can't do it.`)
