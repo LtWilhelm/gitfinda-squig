@@ -36,7 +36,7 @@ client.on('message', message => {
         }).reduce((a, b) => {
           const aCount = a.name && parseInt(a.name.split('#')[1])
           const bCount = parseInt(b.name.split('#')[1])
-          if (bCount === NaN) return aCount
+          if (!bCount) return aCount
           return aCount > bCount ? aCount : bCount
         }, 0) + 1
 
@@ -61,7 +61,7 @@ client.on('message', message => {
         }).reduce((a, b) => {
           const aCount = a.name && parseInt(a.name.split('#')[1])
           const bCount = parseInt(b.name.split('#')[1])
-          if (bCount === NaN) return aCount
+          if (!bCount) return aCount
           return aCount > bCount ? aCount : bCount
         }, 0) + 1
 
