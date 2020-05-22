@@ -34,8 +34,8 @@ client.on('message', message => {
           // console.log(c.name.toLowerCase())
           return c.name && c.name.toLowerCase().search('issue') !== -1
         }).reduce((a, b) => {
-          const aCount = a.name && parseInt(a.name.split('#')[1])
-          const bCount = parseInt(b.name.split('#')[1])
+          const aCount = a.name ? parseInt(a.name.split('#')[1]) : a;
+          const bCount = parseInt(b.name.split('#')[1]);
           if (!bCount) return aCount
           return aCount > bCount ? aCount : bCount
         }, 0) + 1
@@ -59,7 +59,7 @@ client.on('message', message => {
           // console.log(c.name.toLowerCase())
           return c.name && c.name.toLowerCase().search('request') !== -1
         }).reduce((a, b) => {
-          const aCount = a.name && parseInt(a.name.split('#')[1])
+          const aCount = a.name ? parseInt(a.name.split('#')[1]) : a
           const bCount = parseInt(b.name.split('#')[1])
           if (!bCount) return aCount
           return aCount > bCount ? aCount : bCount
@@ -80,10 +80,10 @@ client.on('message', message => {
     console.log(command)
     switch (command) {
       case 'issue':
-        message.channel.name.search(/(bug|issue)/gi) > -1 ? createIssue(request) : message.channel.send("Oi! Don' use dat 'ere, or da boss'll come thump ya");
+        message.channel.name.search(/(bug|issue|tes)/gi) > -1 ? createIssue(request) : message.channel.send("Oi! Don' use dat 'ere, or da boss'll come thump ya");
         break;
       case 'request':
-        message.channel.name.search(/(reques)/gi) > -1 ? createRequest(request) : message.channel.send("Oi! Don' use dat 'ere, or da boss'll come thump ya");
+        message.channel.name.search(/(reques|tes)/gi) > -1 ? createRequest(request) : message.channel.send("Oi! Don' use dat 'ere, or da boss'll come thump ya");
         break;
       case 'board':
       case 'link':
