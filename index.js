@@ -16,6 +16,13 @@ axios.get(trelloURL + `1/boards/${process.env.TRELLO_BOARD}/lists` + trelloKey)
   .catch(err => console.log(err.data))
 
 client.once('ready', () => {
+  client.user.setPresence({
+    status: 'online',
+    activity: {
+      name: "Krumpin' Gitz",
+      type: 'PLAYING'
+    }
+  })
   console.log('Ready!')
 })
 
