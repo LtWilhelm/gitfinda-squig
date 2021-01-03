@@ -32,7 +32,10 @@ client.on('message', message => {
   const content = message.content.split(' ');
   const first = content.shift();
   const command = content.shift();
-  const request = content.join(' ')
+  let request = content.join(' ')
+
+  const author = message.author;
+  request += ` - Submitted by: ${author.username}`
 
   const createIssue = async (request) =>
     axios.get(trelloURL + `1/boards/${process.env.TRELLO_BOARD}/cards` + trelloKey)
